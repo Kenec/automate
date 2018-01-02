@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 update_system() {
   echo "System updating ...."
@@ -50,6 +50,11 @@ start_app() {
 
 main() {
   echo "Server provisioning in progress..."
+  
+  set -o errexit
+  set -o pipefail
+  set -o nounset
+
   update_system
   install_node
   install_yarn
