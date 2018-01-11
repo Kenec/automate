@@ -13,7 +13,10 @@ set -o nounset
 # Route table will be created to allow all instances running in private subnet to access the internet
 # LoadBalancer instance will be created in public subnet for internet facing of the private instances
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> add script to automate settiong up GCP network
 # set up the vpc network
 create_vpc_network() {
   echo "setting up the GCP VPC network ...."
@@ -45,11 +48,22 @@ create_firewall_rule() {
   gcloud compute firewall-rules create gcp-devops-firewall-allow \
   --allow tcp:1-65535,udp:1-65535,icmp \
   --source-ranges 10.0.0.0/16 \
+<<<<<<< HEAD
   --network gcp-devops-vpc
 
   gcloud compute firewall-rules create gcp-devops-allow-ssh \
   --allow tcp:22 \
   --network gcp-devops-vpc
+=======
+  --network gcp-devops-vpc \
+  --tags gcp-devops-allow-tcp-udp-icmp
+
+  gcloud compute firewall-rules create gcp-devops-allow-ssh \
+  --allow tcp:22 \
+  --source-ranges 10.0.0.0/16 \
+  --network gcp-devops-vpc \
+  --tags gcp-devops-allow-ssh
+>>>>>>> add script to automate settiong up GCP network
 
   echo "Firewall rule created successfully!!"
 }
