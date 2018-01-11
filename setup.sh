@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+set -o errexit
+set -o pipefail
+set -o nounset
+
 update_system() {
   echo "System updating ...."
   sudo apt-get update
